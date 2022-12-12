@@ -19,8 +19,7 @@ class Background:
         self.images = []
         for x in range(len(BACKGROUNDS_AVAILABLE)):
             self.images.append(pygame.image.load(join(cwd,'images','backgrounds',f'level_{x}.png')))
-            
-        self.BG_index = 0
+        self.direction = 0
         self.image0 = self.images[0]
         self.image1 = self.images[1]
         self.image2 = self.images[2]
@@ -29,28 +28,26 @@ class Background:
         # self.image = pygame.image.load(join(cwd,'images','backgrounds','level_0.png'))
         
         
-    def scroll_down(self):
-        pass
-        if self.BG_index -1 <= 0:
-            self.BG_index = 0
-            self.image = self.images[self.BG_index]
-        else:
-            self.BG_index -= 1
     
-    def scroll_up(self):
-        pass
-        if self.BG_index +1 >= len(BACKGROUNDS_AVAILABLE):
-            self.BG_index = len(BACKGROUNDS_AVAILABLE)-1
-            self.image = self.images[self.BG_index]
-        else:
-            self.BG_index += 1
 
     def move(self):
-        self.x0 += 1
-        self.x1 += 2
-        self.x2 += 3
-        self.x3 += 4
+        if self.direction == 1:
+            self.x0 += 1
+            self.x1 += 1.5
+            self.x2 += 2
+            self.x3 += 2.5
+        elif self.direction == -1:
+            self.x0 -= 1
+            self.x1 -= 1.5
+            self.x2 -= 2
+            self.x3 -= 2.5
         
+        elif self.direction == 0:
+            self.x0 = self.x0 + 0
+            self.x1 = self.x1 + 0
+            self.x2 = self.x2
+            self.x3 = self.x3
+
         if self.x0 > self.width:
             self.x0 = 0
         elif self.x1 > self.width:
@@ -59,7 +56,6 @@ class Background:
             self.x2 = 0
         elif self.x3 > self.width:
             self.x3 = 0
-            # self.BG_index +=1
 
 
     def draw(self,window):
