@@ -12,7 +12,7 @@ window = pygame.display.set_mode((SIZE))
 pygame.display.set_caption("Axe Girl vs Skeletons")
 clock = pygame.time.Clock()
 
-BG = backgrounds.Background(0,0)
+BG = backgrounds.Background(0,0,screenWidth,screenHeight)
 AG = sprites.AxeGirl(0,0,50,50)
 SKS = [sprites.Skeleton(900,0,50,50) for x in range(10)]
 
