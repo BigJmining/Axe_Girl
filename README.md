@@ -11,6 +11,6 @@ SPACEBAR - to swing Axe
 
 Q - Quit game
 
-# Contribituors
+# Builders
 
 BigJmining
