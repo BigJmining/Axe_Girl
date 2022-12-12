@@ -1,8 +1,8 @@
 # Axe Girl
-A fun scrolling game of fighting skeletons.
+A fun side-scrolling game of fighting skeletons, with an axe.
 
 Using Pygame and parallaxing background effects with
-animation to AxeGirl and the skeletons.
+animation to Axe Girl and the skeletons.
 
 # Controls
 
