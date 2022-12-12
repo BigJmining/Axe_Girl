@@ -23,7 +23,7 @@ class Skeleton:
         self.y = y
         self.width = width
         self.height = height
-        self.spritesheet = pygame.image.load(join('images','skeleton-spritesheet.png'))
+        self.spritesheet = pygame.image.load(join('images','skeleton-spritesheet.PNG'))
 
 
     def move(self):
