@@ -12,16 +12,24 @@ class AxeGirl:
         self.walkCount = 0
         self.spritesheet = pygame.image.load(join(cwd,'images','female-axe-spritesheet.PNG')).convert_alpha()
         self.rect = pygame.Rect(100,100,self.width,self.height)
+        
         self.sprite_single = self.spritesheet.subsurface(self.rect)
+        self.sprite_single = pygame.transform.scale(self.sprite_single,(80,80))
+        
+
+        # self.rect2 = pygame.Rect(100 + self.width, 100, self.width, self.height)
+        # self.sprite_single2 = self.spritesheet.subsurface(self.rect2)
+
         # self.sprite= pygame.image.load(join(cwd,'images','test_rock.png')).convert_alpha()
 
 
     def move(self):
-        self.x +=1
+        self.x += 0
         
     def draw(self,window):
         self.move()
         window.blit(self.sprite_single,(self.x,self.y))
+
 
 
 class Skeleton:
@@ -32,7 +40,7 @@ class Skeleton:
         self.height = height
         self.walkCount = 0
         self.spritesheet = pygame.image.load(join(cwd,'images','skeleton-spritesheet.PNG')).convert_alpha()
-        self.rect = pygame.Rect(0,0,60,80)
+        self.rect = pygame.Rect(10,80,52,75)
         self.sprite_single = self.spritesheet.subsurface(self.rect)
 
     def move(self):

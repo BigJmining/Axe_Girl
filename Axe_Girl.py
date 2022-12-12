@@ -15,11 +15,10 @@ pygame.display.set_caption("Axe Girl vs Skeletons")
 clock = pygame.time.Clock()
 
 BG = backgrounds.Background(0,0,screenWidth,screenHeight)
-AG = sprites.AxeGirl(0,0,50,50)
+AG = sprites.AxeGirl(screenWidth-80,screenHeight-80,50,50)
 SKS = [sprites.Skeleton(0,400,50,50) for x in range(10)]
 
-BG_base = pygame.image.load(join(cwd,'images','backgrounds','level_0.png'))
-
+ 
 def redrawWindow():
     BG.draw(window)
     
@@ -35,13 +34,23 @@ while run:
     keys = pygame.key.get_pressed()
     
     if keys[pygame.K_UP]:
-        BG.scroll_up()
+        AG.y -= 1
+        AG.walkCount += 1
     
-    if keys[pygame.K_UP]:
+    elif keys[pygame.K_DOWN]:
+        AG.y += 1
+        AG.walkCount += 1
+
+    elif keys[pygame.K_LEFT]:
+        AG.x -= 1
+        AG.walkCount += 1
+
+    elif keys[pygame.K_RIGHT]:
+        AG.x += 1
+        AG.walkCount += 1
+
+    elif keys[pygame.K_n]:
         BG.scroll_down()
-        
-
-
 
     if keys[pygame.K_q]:
         run = False
