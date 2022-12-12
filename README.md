@@ -7,6 +7,7 @@ animation to Axe Girl and the skeletons.
 # Controls
 
 ARROWS - to move Axe Girl
+
 SPACEBAR - to swing Axe
 
 Q - Quit game
