@@ -11,10 +11,10 @@ class Background:
     def __init__(self,x,y,screenWidth,screenHeight):
         self.x = x
         self.y = y
-        self.x0 = x
-        self.x1 = x
-        self.x2 = x
-        self.x3 = x
+        self.layer0_x = x
+        self.layer1_x = x
+        self.layer2_x = x
+        self.layer3_x = x
         self.size = self.width,self.height = screenWidth,screenHeight
         self.images = []
         for x in range(len(BACKGROUNDS_AVAILABLE)):
@@ -32,43 +32,57 @@ class Background:
 
     def move(self):
         if self.direction == 1:
-            self.x0 += 1
-            self.x1 += 1.5
-            self.x2 += 2
-            self.x3 += 2.5
+            self.layer0_x += .55
+            self.layer1_x += 1
+            self.layer2_x += 1.5
+            self.layer3_x += 2.5
         elif self.direction == -1:
-            self.x0 -= 1
-            self.x1 -= 1.5
-            self.x2 -= 2
-            self.x3 -= 2.5
+            self.layer0_x -= .55
+            self.layer1_x -= 1
+            self.layer2_x -= 1.5
+            self.layer3_x -= 2.5
         
         elif self.direction == 0:
-            self.x0 = self.x0 + 0
-            self.x1 = self.x1 + 0
-            self.x2 = self.x2
-            self.x3 = self.x3
+            self.layer0_x = self.layer0_x + 0
+            self.layer1_x = self.layer1_x + 0
+            self.layer2_x = self.layer2_x
+            self.layer3_x = self.layer3_x
 
-        if self.x0 > self.width:
-            self.x0 = 0
-        elif self.x1 > self.width:
-            self.x1 = 0
-        elif self.x2 > self.width:
-            self.x2 = 0
-        elif self.x3 > self.width:
-            self.x3 = 0
+        if self.layer0_x > self.width:
+            self.layer0_x = 0
+        if self.layer0_x < 0:
+            self.layer0_x = self.width
 
+        if self.layer1_x > self.width:
+            self.layer1_x = 0
+        if self.layer1_x < 0:
+            self.layer1_x = self.width
+
+        if self.layer2_x > self.width:
+            self.layer2_x = 0
+        if self.layer2_x < 0:
+            self.layer0_2 = self.width
+
+        if self.layer3_x > self.width:
+            self.layer3_x = 0
+        if self.layer3_x < 0:
+            self.layer3_x = self.width
 
     def draw(self,window):
         self.move()
-        window.blit(self.image0,(self.x0,self.y))
-        window.blit(self.image0,(self.x0-self.width,self.y))
+        window.blit(self.image0,(self.layer0_x,self.y))
+        window.blit(self.image0,(self.layer0_x-self.width,self.y))
+        window.blit(self.image0,(self.layer0_x-self.width*2,self.y))
         
-        window.blit(self.image1,(self.x1,self.y))
-        window.blit(self.image1,(self.x1-self.width,self.y))
+        window.blit(self.image1,(self.layer1_x,self.y))
+        window.blit(self.image1,(self.layer1_x-self.width,self.y))
+        window.blit(self.image1,(self.layer1_x-self.width*2,self.y))
         
-        window.blit(self.image2,(self.x2,self.y))
-        window.blit(self.image2,(self.x2-self.width,self.y))
+        window.blit(self.image2,(self.layer2_x,self.y))
+        window.blit(self.image2,(self.layer2_x-self.width,self.y))
+        window.blit(self.image2,(self.layer2_x-self.width*2,self.y))
 
-        window.blit(self.image3,(self.x3,self.y))
-        window.blit(self.image3,(self.x3-self.width,self.y))
+        window.blit(self.image3,(self.layer3_x,self.y))
+        window.blit(self.image3,(self.layer3_x-self.width,self.y))
+        window.blit(self.image3,(self.layer3_x-self.width*2,self.y))
         # print('BG:',self.image)
